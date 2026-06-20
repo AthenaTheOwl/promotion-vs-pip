@@ -1,0 +1,37 @@
+# Policy cards: persistent rule tweaks. 6 in v0.1.
+
+- id: L-01
+  title: OKR Realignment
+  type: policy
+  effect: Numbers do not matter this round; adjectives do. Replace each numeric value on played cards with the nearest adjective.
+  alienation: Translate "10x" as "transformational" the first time it is read.
+
+- id: L-02
+  title: Two-Pizza Team
+  type: policy
+  effect: Hand size = number of pizza slices on the table (real or imagined). If no pizza, hand size = 2.
+  alienation: Order the imaginary pizza aloud.
+
+- id: L-03
+  title: Open-Door Policy
+  type: policy
+  effect: Anyone may interrupt any Proposal once. The interrupter gains +1 reputation if the table acknowledges the interruption.
+  alienation: Knock on the table before interrupting.
+
+- id: L-04
+  title: Data-Driven Mandate
+  type: policy
+  effect: Every Proposal must cite a number. Citations are not verified. Proposals without a number gain no reputation.
+  alienation: Read every number twice for emphasis.
+
+- id: L-05
+  title: Customer Obsession
+  type: policy
+  effect: Each round, the player who mentions "the customer" earliest gets +1 reputation. Subsequent mentions are worth -1.
+  alienation: Mime cradling a fragile object whenever you say "customer."
+
+- id: L-06
+  title: Hiring Freeze
+  type: policy
+  effect: Proposals that add headcount cannot be played. Proposals that "rebalance" the org are unaffected.
+  alienation: Use the phrase "freeing up capacity" when reading any rebalance.

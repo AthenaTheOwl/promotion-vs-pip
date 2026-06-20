@@ -1,0 +1,20 @@
+{
+  "name": "promotion-vs-pip",
+  "version": "0.1.0",
+  "description": "Brechtian corporate-satire deckbuilder. 36-card paper prototype.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate_cards.js",
+    "render": "node scripts/render_cards.js --out print.html",
+    "test": "node --test scripts/tests/test_validate.js scripts/tests/test_render.js scripts/tests/test_no_employer_names.js"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "js-yaml": "^4.1.0"
+  },
+  "license": "MIT"
+}

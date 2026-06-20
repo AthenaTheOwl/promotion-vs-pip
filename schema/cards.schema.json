@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/AthenaTheOwl/promotion-vs-pip/schema/cards.schema.json",
+  "title": "Promotion-vs-PIP card",
+  "type": "object",
+  "required": ["id", "title", "type", "effect", "alienation"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[MPLE]-[0-9]{2}$",
+      "description": "Card id: type-letter (M/P/L/E) + 2-digit number"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 40
+    },
+    "type": {
+      "enum": ["meeting", "proposal", "policy", "exposure"]
+    },
+    "effect": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 280,
+      "description": "The rules text on the card."
+    },
+    "alienation": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 240,
+      "description": "The Brechtian audience-facing bit."
+    },
+    "flavor": {
+      "type": "string",
+      "maxLength": 140,
+      "description": "Optional one-liner deadpan dressing."
+    }
+  }
+}

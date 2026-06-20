@@ -1,0 +1,38 @@
+# Exposure cards: callouts. 6 in v0.1.
+
+- id: E-01
+  title: Post-Mortem, Pre-Launch
+  type: exposure
+  effect: Point at a played card and ask "what problem does this solve?" If they take more than 10 seconds to answer, they gain 1 red flag; you gain +1 reputation.
+  alienation: Stand and ask with genuine concern.
+
+- id: E-02
+  title: Continuity Error
+  type: exposure
+  effect: The last two cards played by any player cannot be used this round unless someone narrates the missing scene.
+  alienation: Read this card while looking past the table, as if into a different shot.
+
+- id: E-03
+  title: Audit Trail
+  type: exposure
+  effect: Pick a target's reputation gain from the last round. Demand evidence. If they cannot reconstruct the math, reverse the gain.
+  alienation: Hold an imaginary clipboard.
+
+- id: E-04
+  title: Blameless Post-Mortem
+  type: exposure
+  effect: Re-tell another player's failure as a "learning." That player gains -1 red flag. You gain +1 reputation.
+  alienation: End with "and that's how we got better as a team."
+  flavor: They did not get better as a team.
+
+- id: E-05
+  title: Calendar Subpoena
+  type: exposure
+  effect: Demand the target name every meeting they took this round. If they miss one, 1 red flag.
+  alienation: Open a fictitious calendar app and scroll for effect.
+
+- id: E-06
+  title: Visibility Question
+  type: exposure
+  effect: Ask the target "who sees this work?" If they cannot name three stakeholders, their next Proposal cannot score.
+  alienation: Lean forward and tilt your head slightly.

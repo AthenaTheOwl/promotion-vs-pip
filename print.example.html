@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>promotion-vs-pip — 36 cards</title>
+<style>
+/* Print-friendly card layout. 2.5" x 3.5", 3x3 per page. */
+@page { size: Letter; margin: 0.25in; }
+
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  margin: 0;
+  background: #fafafa;
+}
+.page {
+  display: grid;
+  grid-template-columns: repeat(3, 2.5in);
+  grid-auto-rows: 3.5in;
+  gap: 0.05in;
+  page-break-after: always;
+  justify-content: center;
+}
+.page:last-child { page-break-after: auto; }
+
+.card {
+  width: 2.5in;
+  height: 3.5in;
+  border: 1.5pt solid #222;
+  border-radius: 0.125in;
+  padding: 0.18in;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 9pt;
+  line-height: 1.25;
+  overflow: hidden;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7pt;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 0.5pt solid #ddd;
+  padding-bottom: 0.04in;
+  margin-bottom: 0.08in;
+}
+.card-title {
+  font-size: 12pt;
+  font-weight: 600;
+  margin-bottom: 0.08in;
+}
+.card-effect {
+  flex: 1;
+  margin-bottom: 0.08in;
+}
+.card-alienation {
+  font-size: 8pt;
+  color: #444;
+  border-top: 0.5pt solid #ddd;
+  padding-top: 0.06in;
+}
+.card-flavor:not(:empty) {
+  font-size: 7pt;
+  color: #888;
+  font-style: italic;
+  margin-top: 0.04in;
+}
+
+/* Color-code by type so a glance at the deck shows the mix. */
+.card-meeting   { border-color: #1f5fa6; }
+.card-meeting   .card-type { color: #1f5fa6; }
+.card-proposal  { border-color: #2a7a3a; }
+.card-proposal  .card-type { color: #2a7a3a; }
+.card-policy    { border-color: #a85a00; }
+.card-policy    .card-type { color: #a85a00; }
+.card-exposure  { border-color: #a8002a; }
+.card-exposure  .card-type { color: #a8002a; }
+
+@media screen {
+  body { padding: 0.4in 0; }
+  .page { background: white; padding: 0.25in 0; box-shadow: 0 2pt 8pt rgba(0,0,0,0.06); margin: 0 auto 0.3in; }
+}
+
+</style>
+</head>
+<body>
+<section class="page">
+<div class="card card-meeting">
+  <div class="card-header">
+    <span class="card-id">M-01</span>
+    <span class="card-type">meeting</span>
+  </div>
+  <div class="card-title">All-Hands</div>
+  <div class="card-effect">Applause tokens count double this round. Boo tokens convert to red flags.</div>
+  <div class="card-alienation"><em>— Stand up. Greet the table as if they are 9,000 employees on a Zoom call.</em></div>
+  <div class="card-flavor">The morale survey is open until Friday.</div>
+</div>
+
+<div class="card card-meeting">
+  <div class="card-header">
+    <span class="card-id">M-02</span>
+    <span class="card-type">meeting</span>
+  </div>
+  <div class="card-title">Sprint Review</div>
+  <div class="card-effect">Only actions you can mime score full reputation. Verbal-only proposals score half.</div>
+  <div class="card-alienation"><em>— Mime the work item before you read its effect.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-meeting">
+  <div class="card-header">
+    <span class="card-id">M-03</span>
+    <span class="card-type">meeting</span>
+  </div>
+  <div class="card-title">Board Update</div>
+  <div class="card-effect">Speak only in metrics or metaphors this round. Table votes on which language did better.</div>
+  <div class="card-alienation"><em>— Replace every adjective on your card with the word &quot;north-star&quot; before reading.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-meeting">
+  <div class="card-header">
+    <span class="card-id">M-04</span>
+    <span class="card-type">meeting</span>
+  </div>
+  <div class="card-title">Reorg Roulette</div>
+  <div class="card-effect">Shuffle all in-play Policies. Re-deal one to each player. Everyone must justify why this was inevitable.</div>
+  <div class="card-alienation"><em>— Begin your justification with &quot;as we have been saying for some time&quot;.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-meeting">
+  <div class="card-header">
+    <span class="card-id">M-05</span>
+    <span class="card-type">meeting</span>
+  </div>
+  <div class="card-title">Quarterly Roadmap Lock</div>
+  <div class="card-effect">No Exposures may be played this round. All Proposals must be framed as commitments.</div>
+  <div class="card-alienation"><em>— Sign each Proposal with an imaginary pen and pass it to the player on your left.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-meeting">
+  <div class="card-header">
+    <span class="card-id">M-06</span>
+    <span class="card-type">meeting</span>
+  </div>
+  <div class="card-title">Skip-Level</div>
+  <div class="card-effect">The player with the lowest reputation chooses one card from each opponent's hand to set aside.</div>
+  <div class="card-alienation"><em>— Address the highest-reputation player as if they have asked you about your career goals.</em></div>
+  <div class="card-flavor">They almost certainly did not ask.</div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-01</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Quarterly Moonshot</div>
+  <div class="card-effect">Promise 10x. If table laughs, +3 reputation, +1 red flag. If table is silent, +1 reputation only.</div>
+  <div class="card-alienation"><em>— Use the phrase &quot;non-linear growth&quot; at least twice.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-02</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Cross-Functional Offsite</div>
+  <div class="card-effect">Everyone switches seats. You draw 3 Proposals. If anyone refuses to move, you gain +2 reputation for &quot;driving change.&quot;</div>
+  <div class="card-alienation"><em>— Read this card while standing in a different player's chair.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-03</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Hire-To-Plan Defense</div>
+  <div class="card-effect">Justify a hire you didn't need. Table votes; if more than half nod sagely, +2 reputation.</div>
+  <div class="card-alienation"><em>— Use the phrase &quot;we are leaning in here&quot; and pause.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+</section>
+<section class="page">
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-04</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Vendor Re-Eval</div>
+  <div class="card-effect">Pick another player's Policy. Reframe it as your initiative. If they don't push back, take +1 reputation and the Policy.</div>
+  <div class="card-alienation"><em>— Read the Policy aloud as if you wrote it.</em></div>
+  <div class="card-flavor">They will push back.</div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-05</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Pre-Read Distribution</div>
+  <div class="card-effect">Slide one of your other Proposals under the table. It resolves at end of round with no votes.</div>
+  <div class="card-alienation"><em>— Mutter the contents of the pre-read as a sidebar to no one.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-06</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Strategic Pause</div>
+  <div class="card-effect">Skip your turn. Gain +1 reputation. Lose -1 if the round still ends in your favor.</div>
+  <div class="card-alienation"><em>— Cross your arms and look thoughtful for five seconds.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-07</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Roadmap Tightening</div>
+  <div class="card-effect">Discard a Proposal from your hand. Gain +2 reputation. The discarded Proposal becomes a Red Flag for the next round.</div>
+  <div class="card-alienation"><em>— Announce the cut as if it was your idea all along.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-08</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Customer Anecdote</div>
+  <div class="card-effect">Tell a story about a customer the table cannot verify. If no one asks for sources, +2 reputation.</div>
+  <div class="card-alienation"><em>— Begin with &quot;I was just on the phone with one of our largest customers.&quot;</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-09</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Brown-Bag Talk</div>
+  <div class="card-effect">Volunteer to teach the team something. Gain +1 reputation. Lose -1 if the topic is your own past mistake.</div>
+  <div class="card-alienation"><em>— Say &quot;this is a learning organization&quot; at the end.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-10</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Calendar Defense</div>
+  <div class="card-effect">Decline a meeting in front of the table. Gain +1 reputation. Lose -1 if the meeting was yours.</div>
+  <div class="card-alienation"><em>— Send the decline aloud, in real time, with a one-sentence rationale.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-11</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">New Framework Adoption</div>
+  <div class="card-effect">Pick a noun from another player's card. Append &quot;framework&quot; to it. Propose adopting it across the org. +2 reputation if table cannot recall what it does in 10 seconds.</div>
+  <div class="card-alienation"><em>— Draw the framework as a 2x2 in the air.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-12</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Listening Tour</div>
+  <div class="card-effect">Ask each player one open-ended question. Take their answers as inputs to a future Proposal. +1 reputation per answer you do not interrupt.</div>
+  <div class="card-alienation"><em>— Make notes on an imaginary pad after each answer.</em></div>
+  <div class="card-flavor">The notes do not need to relate to the answers.</div>
+</div>
+
+</section>
+<section class="page">
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-13</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Stretch Goal</div>
+  <div class="card-effect">Add a number to the current Meeting card. The table must vote whether the number is &quot;ambitious&quot; or &quot;unrealistic.&quot; +2 reputation on either verdict.</div>
+  <div class="card-alienation"><em>— Underline the number on the table with your finger.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-14</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Cross-Org Alignment</div>
+  <div class="card-effect">Name two Proposals on the table. Declare them &quot;aligned.&quot; Both owners gain +1 reputation; you gain +2.</div>
+  <div class="card-alienation"><em>— Use the word &quot;synergies&quot; exactly once and apologize for it.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-15</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Bias For Action</div>
+  <div class="card-effect">Resolve the current Meeting card immediately without further discussion. Gain +1 reputation. Lose -2 if anyone protests.</div>
+  <div class="card-alienation"><em>— Stand. Pick up the Meeting card. Place it face down.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-16</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Mentorship Hour</div>
+  <div class="card-effect">Offer feedback to the player on your right. They may accept or refuse. On accept, +1 reputation to both. On refuse, +1 red flag to you.</div>
+  <div class="card-alienation"><em>— Begin the feedback with &quot;in the spirit of growth.&quot;</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-17</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Vendor Lunch</div>
+  <div class="card-effect">Trade one of your Proposals for one in another player's hand. Both players gain +1 reputation. The vendor pays.</div>
+  <div class="card-alienation"><em>— Refer to the vendor as &quot;a great partner of ours.&quot;</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-proposal">
+  <div class="card-header">
+    <span class="card-id">P-18</span>
+    <span class="card-type">proposal</span>
+  </div>
+  <div class="card-title">Quiet Win</div>
+  <div class="card-effect">Discard this card without playing it. Gain +1 reputation at end of round.</div>
+  <div class="card-alienation"><em>— Place this card face down in front of you. Say nothing.</em></div>
+  <div class="card-flavor">The win is in the not-saying.</div>
+</div>
+
+<div class="card card-policy">
+  <div class="card-header">
+    <span class="card-id">L-01</span>
+    <span class="card-type">policy</span>
+  </div>
+  <div class="card-title">OKR Realignment</div>
+  <div class="card-effect">Numbers do not matter this round; adjectives do. Replace each numeric value on played cards with the nearest adjective.</div>
+  <div class="card-alienation"><em>— Translate &quot;10x&quot; as &quot;transformational&quot; the first time it is read.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-policy">
+  <div class="card-header">
+    <span class="card-id">L-02</span>
+    <span class="card-type">policy</span>
+  </div>
+  <div class="card-title">Two-Pizza Team</div>
+  <div class="card-effect">Hand size = number of pizza slices on the table (real or imagined). If no pizza, hand size = 2.</div>
+  <div class="card-alienation"><em>— Order the imaginary pizza aloud.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-policy">
+  <div class="card-header">
+    <span class="card-id">L-03</span>
+    <span class="card-type">policy</span>
+  </div>
+  <div class="card-title">Open-Door Policy</div>
+  <div class="card-effect">Anyone may interrupt any Proposal once. The interrupter gains +1 reputation if the table acknowledges the interruption.</div>
+  <div class="card-alienation"><em>— Knock on the table before interrupting.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+</section>
+<section class="page">
+<div class="card card-policy">
+  <div class="card-header">
+    <span class="card-id">L-04</span>
+    <span class="card-type">policy</span>
+  </div>
+  <div class="card-title">Data-Driven Mandate</div>
+  <div class="card-effect">Every Proposal must cite a number. Citations are not verified. Proposals without a number gain no reputation.</div>
+  <div class="card-alienation"><em>— Read every number twice for emphasis.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-policy">
+  <div class="card-header">
+    <span class="card-id">L-05</span>
+    <span class="card-type">policy</span>
+  </div>
+  <div class="card-title">Customer Obsession</div>
+  <div class="card-effect">Each round, the player who mentions &quot;the customer&quot; earliest gets +1 reputation. Subsequent mentions are worth -1.</div>
+  <div class="card-alienation"><em>— Mime cradling a fragile object whenever you say &quot;customer.&quot;</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-policy">
+  <div class="card-header">
+    <span class="card-id">L-06</span>
+    <span class="card-type">policy</span>
+  </div>
+  <div class="card-title">Hiring Freeze</div>
+  <div class="card-effect">Proposals that add headcount cannot be played. Proposals that &quot;rebalance&quot; the org are unaffected.</div>
+  <div class="card-alienation"><em>— Use the phrase &quot;freeing up capacity&quot; when reading any rebalance.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-exposure">
+  <div class="card-header">
+    <span class="card-id">E-01</span>
+    <span class="card-type">exposure</span>
+  </div>
+  <div class="card-title">Post-Mortem, Pre-Launch</div>
+  <div class="card-effect">Point at a played card and ask &quot;what problem does this solve?&quot; If they take more than 10 seconds to answer, they gain 1 red flag; you gain +1 reputation.</div>
+  <div class="card-alienation"><em>— Stand and ask with genuine concern.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-exposure">
+  <div class="card-header">
+    <span class="card-id">E-02</span>
+    <span class="card-type">exposure</span>
+  </div>
+  <div class="card-title">Continuity Error</div>
+  <div class="card-effect">The last two cards played by any player cannot be used this round unless someone narrates the missing scene.</div>
+  <div class="card-alienation"><em>— Read this card while looking past the table, as if into a different shot.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-exposure">
+  <div class="card-header">
+    <span class="card-id">E-03</span>
+    <span class="card-type">exposure</span>
+  </div>
+  <div class="card-title">Audit Trail</div>
+  <div class="card-effect">Pick a target's reputation gain from the last round. Demand evidence. If they cannot reconstruct the math, reverse the gain.</div>
+  <div class="card-alienation"><em>— Hold an imaginary clipboard.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-exposure">
+  <div class="card-header">
+    <span class="card-id">E-04</span>
+    <span class="card-type">exposure</span>
+  </div>
+  <div class="card-title">Blameless Post-Mortem</div>
+  <div class="card-effect">Re-tell another player's failure as a &quot;learning.&quot; That player gains -1 red flag. You gain +1 reputation.</div>
+  <div class="card-alienation"><em>— End with &quot;and that's how we got better as a team.&quot;</em></div>
+  <div class="card-flavor">They did not get better as a team.</div>
+</div>
+
+<div class="card card-exposure">
+  <div class="card-header">
+    <span class="card-id">E-05</span>
+    <span class="card-type">exposure</span>
+  </div>
+  <div class="card-title">Calendar Subpoena</div>
+  <div class="card-effect">Demand the target name every meeting they took this round. If they miss one, 1 red flag.</div>
+  <div class="card-alienation"><em>— Open a fictitious calendar app and scroll for effect.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+<div class="card card-exposure">
+  <div class="card-header">
+    <span class="card-id">E-06</span>
+    <span class="card-type">exposure</span>
+  </div>
+  <div class="card-title">Visibility Question</div>
+  <div class="card-effect">Ask the target &quot;who sees this work?&quot; If they cannot name three stakeholders, their next Proposal cannot score.</div>
+  <div class="card-alienation"><em>— Lean forward and tilt your head slightly.</em></div>
+  <div class="card-flavor"></div>
+</div>
+
+</section>
+</body>
+</html>

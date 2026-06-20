@@ -1,0 +1,39 @@
+# Meeting cards: round frames. One revealed at the start of each round.
+
+- id: M-01
+  title: All-Hands
+  type: meeting
+  effect: Applause tokens count double this round. Boo tokens convert to red flags.
+  alienation: Stand up. Greet the table as if they are 9,000 employees on a Zoom call.
+  flavor: The morale survey is open until Friday.
+
+- id: M-02
+  title: Sprint Review
+  type: meeting
+  effect: Only actions you can mime score full reputation. Verbal-only proposals score half.
+  alienation: Mime the work item before you read its effect.
+
+- id: M-03
+  title: Board Update
+  type: meeting
+  effect: Speak only in metrics or metaphors this round. Table votes on which language did better.
+  alienation: Replace every adjective on your card with the word "north-star" before reading.
+
+- id: M-04
+  title: Reorg Roulette
+  type: meeting
+  effect: Shuffle all in-play Policies. Re-deal one to each player. Everyone must justify why this was inevitable.
+  alienation: Begin your justification with "as we have been saying for some time".
+
+- id: M-05
+  title: Quarterly Roadmap Lock
+  type: meeting
+  effect: No Exposures may be played this round. All Proposals must be framed as commitments.
+  alienation: Sign each Proposal with an imaginary pen and pass it to the player on your left.
+
+- id: M-06
+  title: Skip-Level
+  type: meeting
+  effect: The player with the lowest reputation chooses one card from each opponent's hand to set aside.
+  alienation: Address the highest-reputation player as if they have asked you about your career goals.
+  flavor: They almost certainly did not ask.

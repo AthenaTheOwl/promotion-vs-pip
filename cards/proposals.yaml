@@ -1,0 +1,112 @@
+# Proposal cards: the main action. 18 of them.
+
+- id: P-01
+  title: Quarterly Moonshot
+  type: proposal
+  effect: Promise 10x. If table laughs, +3 reputation, +1 red flag. If table is silent, +1 reputation only.
+  alienation: Use the phrase "non-linear growth" at least twice.
+
+- id: P-02
+  title: Cross-Functional Offsite
+  type: proposal
+  effect: Everyone switches seats. You draw 3 Proposals. If anyone refuses to move, you gain +2 reputation for "driving change."
+  alienation: Read this card while standing in a different player's chair.
+
+- id: P-03
+  title: Hire-To-Plan Defense
+  type: proposal
+  effect: Justify a hire you didn't need. Table votes; if more than half nod sagely, +2 reputation.
+  alienation: Use the phrase "we are leaning in here" and pause.
+
+- id: P-04
+  title: Vendor Re-Eval
+  type: proposal
+  effect: Pick another player's Policy. Reframe it as your initiative. If they don't push back, take +1 reputation and the Policy.
+  alienation: Read the Policy aloud as if you wrote it.
+  flavor: They will push back.
+
+- id: P-05
+  title: Pre-Read Distribution
+  type: proposal
+  effect: Slide one of your other Proposals under the table. It resolves at end of round with no votes.
+  alienation: Mutter the contents of the pre-read as a sidebar to no one.
+
+- id: P-06
+  title: Strategic Pause
+  type: proposal
+  effect: Skip your turn. Gain +1 reputation. Lose -1 if the round still ends in your favor.
+  alienation: Cross your arms and look thoughtful for five seconds.
+
+- id: P-07
+  title: Roadmap Tightening
+  type: proposal
+  effect: Discard a Proposal from your hand. Gain +2 reputation. The discarded Proposal becomes a Red Flag for the next round.
+  alienation: Announce the cut as if it was your idea all along.
+
+- id: P-08
+  title: Customer Anecdote
+  type: proposal
+  effect: Tell a story about a customer the table cannot verify. If no one asks for sources, +2 reputation.
+  alienation: Begin with "I was just on the phone with one of our largest customers."
+
+- id: P-09
+  title: Brown-Bag Talk
+  type: proposal
+  effect: Volunteer to teach the team something. Gain +1 reputation. Lose -1 if the topic is your own past mistake.
+  alienation: Say "this is a learning organization" at the end.
+
+- id: P-10
+  title: Calendar Defense
+  type: proposal
+  effect: Decline a meeting in front of the table. Gain +1 reputation. Lose -1 if the meeting was yours.
+  alienation: Send the decline aloud, in real time, with a one-sentence rationale.
+
+- id: P-11
+  title: New Framework Adoption
+  type: proposal
+  effect: Pick a noun from another player's card. Append "framework" to it. Propose adopting it across the org. +2 reputation if table cannot recall what it does in 10 seconds.
+  alienation: Draw the framework as a 2x2 in the air.
+
+- id: P-12
+  title: Listening Tour
+  type: proposal
+  effect: Ask each player one open-ended question. Take their answers as inputs to a future Proposal. +1 reputation per answer you do not interrupt.
+  alienation: Make notes on an imaginary pad after each answer.
+  flavor: The notes do not need to relate to the answers.
+
+- id: P-13
+  title: Stretch Goal
+  type: proposal
+  effect: Add a number to the current Meeting card. The table must vote whether the number is "ambitious" or "unrealistic." +2 reputation on either verdict.
+  alienation: Underline the number on the table with your finger.
+
+- id: P-14
+  title: Cross-Org Alignment
+  type: proposal
+  effect: Name two Proposals on the table. Declare them "aligned." Both owners gain +1 reputation; you gain +2.
+  alienation: Use the word "synergies" exactly once and apologize for it.
+
+- id: P-15
+  title: Bias For Action
+  type: proposal
+  effect: Resolve the current Meeting card immediately without further discussion. Gain +1 reputation. Lose -2 if anyone protests.
+  alienation: Stand. Pick up the Meeting card. Place it face down.
+
+- id: P-16
+  title: Mentorship Hour
+  type: proposal
+  effect: Offer feedback to the player on your right. They may accept or refuse. On accept, +1 reputation to both. On refuse, +1 red flag to you.
+  alienation: Begin the feedback with "in the spirit of growth."
+
+- id: P-17
+  title: Vendor Lunch
+  type: proposal
+  effect: Trade one of your Proposals for one in another player's hand. Both players gain +1 reputation. The vendor pays.
+  alienation: Refer to the vendor as "a great partner of ours."
+
+- id: P-18
+  title: Quiet Win
+  type: proposal
+  effect: Discard this card without playing it. Gain +1 reputation at end of round.
+  alienation: Place this card face down in front of you. Say nothing.
+  flavor: The win is in the not-saying.
