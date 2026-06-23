@@ -37,6 +37,9 @@ npm run validate
 npm run render
 open print.html             # mac;  start print.html on windows
 
+# Build the static site (public/index.html landing + public/deck.html deck)
+npm run build
+
 # Run the tests
 npm test
 ```
@@ -83,6 +86,20 @@ portfolio's operating-discipline aesthetic as the satire substrate. The
 StarVaders) showed appetite for narrative-mechanical hybrids. This is
 the smallest possible entry: a paper deck a person can print at home
 and play in 30 minutes.
+
+## live demo
+
+the static site is a clean vercel static deploy. `npm run build` renders the
+deck into `public/` (a landing `index.html` plus the printable `deck.html`),
+and `vercel.json` points the output directory at `public/`.
+
+deploy steps:
+
+1. go to vercel.com -> add new -> project -> import `AthenaTheOwl/promotion-vs-pip`
+2. vercel reads `vercel.json` (build command `npm run build`, output dir `public/`)
+3. deploy
+
+<!-- live-url: https://___.vercel.app -->
 
 ## License
 

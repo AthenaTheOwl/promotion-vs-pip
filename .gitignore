@@ -3,6 +3,8 @@ node_modules/
 .idea/
 generated/*.pdf
 generated/*.html
+public/
+.vercel/
 playtest-archive/scratch/
 __pycache__/
 *.pyc
