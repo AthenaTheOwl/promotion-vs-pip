@@ -1,29 +1,27 @@
 # Promotion vs PIP
 
-A Brechtian deckbuilding card game. You climb the promotion track while
-accruing PIP red flags. The audience votes change the rules mid-round.
+Every card that climbs the promotion track also quietly stamps you with a red flag. Win enough, loudly enough, and the same deck that promoted you has built the case for your PIP. Thirty-six cards, one paper sleeve, and an audience that can vote the rules sideways while you're mid-pitch.
 
-## What this is
+## What it does
 
-A 36-card print-and-play prototype. Six Meeting cards, eighteen Proposal
-cards, six Policy cards, six Exposure cards. The deck is corporate
-satire with mechanical teeth: every promotion-track win quietly
-increases your PIP exposure, and the audience (other players, or a
-live audience at the table) can vote rule changes that flip incentives
-mid-round.
+A 36-card print-and-play deck of corporate satire with mechanical teeth. Six Meeting cards frame the round, eighteen Proposal cards are where you actually move, six Policy cards bend the rules until the next shuffle, and six Exposure cards exist to point at your work and ask "what problem does this solve?" The promotion track and the PIP track are the same track read in two directions: a Roadmap Tightening that earns you +2 reputation leaves the cut Proposal sitting there as a Red Flag next round.
 
-The artifact is a printable card deck plus a one-page rules sheet plus
-a playtest report after the first session. No app, no engine, no
-companion software. The whole thing fits in a paper sleeve.
+It's Brechtian on purpose. Cards carry an alienation instruction — say "synergies" exactly once and apologize for it, mime cradling a fragile object whenever you say "customer" — so the table is always half-performing the meeting it's mocking. And the audience votes can flip incentives mid-round, so the strategy you committed to on turn one can be the thing that sinks you by turn four.
 
-## Status
+No app, no engine, no companion software. The whole game fits in a paper sleeve and runs in about 30 minutes.
 
-v0.1 — 36 cards committed, renderer ships a print.html, rules v0
-ready for a first 60-minute session. `print.example.html` is the
-committed sample render.
+## Try it
 
-10 node tests pass: schema validation, render output, card count,
-HTML-escape, banned-name regression.
+```bash
+npm install                 # ajv + js-yaml only
+npm run validate
+```
+
+```
+valid: 36 cards (M:6 P:18 L:6 E:6)
+```
+
+`validate` checks all 36 card YAMLs against the schema and confirms the deck still counts to six Meetings, eighteen Proposals, six Policies, and six Exposures. Exits clean on a clean deck.
 
 ## How to run
 
@@ -44,10 +42,25 @@ npm run build
 npm test
 ```
 
-Print on cardstock, cut along the 2.5" x 3.5" borders. Each page
-holds 9 cards. Read `rules/v0.md` for setup, round structure, and
-win conditions. After playing, log what happened in
-`playtest-log/<date>.md` (template at `playtest-log/2026-06-21-template.md`).
+Print on cardstock, cut along the 2.5" x 3.5" borders. Each page holds 9 cards. Read `rules/v0.md` for setup, round structure, and win conditions. After playing, log what happened in `playtest-log/<date>.md` (template at `playtest-log/2026-06-21-template.md`).
+
+## live demo
+
+the static site is a clean vercel static deploy. `npm run build` renders the
+deck into `public/` (a landing `index.html` plus the printable `deck.html`),
+and `vercel.json` points the output directory at `public/`.
+
+deploy steps:
+
+1. go to vercel.com -> add new -> project -> import `AthenaTheOwl/promotion-vs-pip`
+2. vercel reads `vercel.json` (build command `npm run build`, output dir `public/`)
+3. deploy
+
+<!-- live-url: https://___.vercel.app -->
+
+## How it connects
+
+Part of the narrative cluster — small print-and-play experiments that turn a system into something you can sit at a table and play. Its sibling [oulipo-memory-deck](https://github.com/AthenaTheOwl/oulipo-memory-deck) runs the same paper-deck shape over a writing constraint instead of a promotion ladder, and both live alongside the [starforge demos](https://github.com/AthenaTheOwl?tab=repositories&q=starforge), which share one prose source and ship as different playable shapes.
 
 ## Layout
 
@@ -76,30 +89,6 @@ win conditions. After playing, log what happened in
     ├── 0001-foundation/         original scaffold spec
     └── 0002-design/             v0.1 narrowed scope (this is what shipped)
 ```
-
-## Why this exists
-
-The user has Amazon TPM ground-truth on actual promotion and PIP
-dynamics, MIT systems-thinking literacy on the feedback loops, and the
-portfolio's operating-discipline aesthetic as the satire substrate. The
-2026 indie deckbuilder wave (Shroom and Gloom, Mr Magpie, Beyond Words,
-StarVaders) showed appetite for narrative-mechanical hybrids. This is
-the smallest possible entry: a paper deck a person can print at home
-and play in 30 minutes.
-
-## live demo
-
-the static site is a clean vercel static deploy. `npm run build` renders the
-deck into `public/` (a landing `index.html` plus the printable `deck.html`),
-and `vercel.json` points the output directory at `public/`.
-
-deploy steps:
-
-1. go to vercel.com -> add new -> project -> import `AthenaTheOwl/promotion-vs-pip`
-2. vercel reads `vercel.json` (build command `npm run build`, output dir `public/`)
-3. deploy
-
-<!-- live-url: https://___.vercel.app -->
 
 ## License
 
