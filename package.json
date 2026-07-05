@@ -11,7 +11,7 @@
     "validate": "node scripts/validate_cards.js",
     "render": "node scripts/render_cards.js --out print.html",
     "build": "node scripts/build_site.js",
-    "test": "node --test scripts/tests/test_validate.js scripts/tests/test_render.js scripts/tests/test_no_employer_names.js"
+    "test": "node --test scripts/tests/test_validate.js scripts/tests/test_render.js scripts/tests/test_no_employer_names.js engine/tests/test_engine.test.js engine/tests/test_bots.test.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",
