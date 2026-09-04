@@ -32,14 +32,26 @@ the user prints and plays is the entire product.
 | `renderer` | Maintains `scripts/render_cards.py` and templates |
 | `playtester` | Files `playtest-archive/<date>-<group>.md` |
 
-## Gates (will land in spec 0002)
+## Gates
+
+Built and running in CI (`.github/workflows/ci.yml`):
 
 ```bash
-python scripts/validate_cards.py
-python scripts/voice_lint.py cards/*.yaml rules/v0.md
-python scripts/spec_check.py
-python scripts/render_cards.py --check-only
+npm run validate    # node scripts/validate_cards.js — 36 cards, counts by type
+npm test            # node --test over validate, render, no-employer-names, engine, bots
+npm run build       # node scripts/build_site.js
 ```
+
+The gates landed in Node, not Python. The earlier plan named
+`validate_cards.py`, `render_cards.py --check-only`, and
+`spec_check.py`; the first two exist as `scripts/validate_cards.js` and
+`scripts/render_cards.js`, and `npm run validate` is the card gate.
+`test_no_employer_names.js` enforces the "no real companies, products,
+or executives" rule from Voice constraints.
+
+Planned, not built: `spec_check.py` (every R-* ID in `specs/` resolved
+by a DEC or test) and a voice lint over `cards/*.yaml` and `rules/v0.md`.
+Do not cite either as if it runs.
 
 A card YAML that fails validation does not get rendered.
 
