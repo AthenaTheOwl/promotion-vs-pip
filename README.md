@@ -42,7 +42,7 @@ npm run build
 npm test
 ```
 
-Print on cardstock, cut along the 2.5" x 3.5" borders. Each page holds 9 cards. Read `rules/v0.md` for setup, round structure, and win conditions. After playing, log what happened in `playtest-log/<date>.md` (template at `playtest-log/2026-06-21-template.md`). To test the audience vote as its own variable, see [Playtest the audience intervention as a separate mechanism](docs/spectator-playtest.md).
+Print on cardstock, cut along the 2.5" x 3.5" borders. Each page holds 9 cards. Read `rules/v0.md` for setup, round structure, and win conditions. After playing, log what happened in `playtest-log/<date>.md` (template at `playtest-log/2026-06-21-template.md`).
 
 ## live demo
 
@@ -92,6 +92,10 @@ Part of the narrative cluster — small print-and-play experiments that turn a s
     ├── 0001-foundation/         original scaffold spec
     └── 0002-design/             v0.1 narrowed scope (this is what shipped)
 ```
+
+## Method update
+
+[Playtest the audience intervention as a separate mechanism](docs/spectator-playtest.md).
 
 ## License
 
