@@ -93,3 +93,7 @@ Part of the narrative cluster — small print-and-play experiments that turn a s
 ## License
 
 MIT. See `LICENSE`. Game design is licensed under the same terms.
+
+## Method update
+
+[Playtest the audience intervention as a separate mechanism](docs/spectator-playtest.md).
