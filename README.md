@@ -42,7 +42,7 @@ npm run build
 npm test
 ```
 
-Print on cardstock, cut along the 2.5" x 3.5" borders. Each page holds 9 cards. Read `rules/v0.md` for setup, round structure, and win conditions. After playing, log what happened in `playtest-log/<date>.md` (template at `playtest-log/2026-06-21-template.md`).
+Print on cardstock, cut along the 2.5" x 3.5" borders. Each page holds 9 cards. Read `rules/v0.md` for setup, round structure, and win conditions. After playing, log what happened in `playtest-log/<date>.md` (template at `playtest-log/2026-06-21-template.md`). To test the audience vote as its own variable, see [Playtest the audience intervention as a separate mechanism](docs/spectator-playtest.md).
 
 ## live demo
 
@@ -82,6 +82,9 @@ Part of the narrative cluster — small print-and-play experiments that turn a s
 ├── rules/v0.md                  60-minute session rules
 ├── decisions/
 │   └── DEC-PVP-001-card-counts.md
+├── docs/
+│   ├── first-pr.md              first PR plan after the scaffold
+│   └── spectator-playtest.md    audience-vote playtest method
 ├── playtest-log/
 │   └── 2026-06-21-template.md
 ├── print.example.html           committed sample render
@@ -93,7 +96,3 @@ Part of the narrative cluster — small print-and-play experiments that turn a s
 ## License
 
 MIT. See `LICENSE`. Game design is licensed under the same terms.
-
-## Method update
-
-[Playtest the audience intervention as a separate mechanism](docs/spectator-playtest.md).
