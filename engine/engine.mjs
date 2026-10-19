@@ -82,7 +82,9 @@ function applyLean(player, suit) {
 }
 
 // Run a full game. `strategies` is an array of bot fns:
-//   (self, ctx) => declaredSuit, where ctx = { handSuits, quarter, players }.
+//   (self, ctx) => declaredSuit, where ctx = { handSuits, quarter, players, complicity }.
+// ctx.complicity is the per-suit count the active rule ticks (self.leans under
+// 'declare', self.wins under 'win'), so a bot avoiding exposure steers on it.
 // tickOn: 'win' (complicity ticks only on quarter dominance) or 'declare'
 // (complicity ticks every time you lean on a suit). Returns a result record.
 export function runGame({ strategies, perSuit = 3, quarters = 6, handSize = 5, tickOn = 'win' }, rng) {
@@ -103,7 +105,7 @@ export function runGame({ strategies, perSuit = 3, quarters = 6, handSize = 5, t
       const hand = p.deck.slice(0, handSize);
       p.deck = p.deck.slice(handSize);
       const handSuits = [...new Set(hand.map((c) => c.suit))];
-      const choice = p.strategy(p, { handSuits, quarter: q, players });
+      const choice = p.strategy(p, { handSuits, quarter: q, players, complicity: counter(p) });
       // forced = wanted to avoid a maxed suit, but the hand only offered maxed suits
       const c = counter(p);
       const fresh = handSuits.filter((s) => (c[s] || 0) < 2);

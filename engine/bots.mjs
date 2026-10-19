@@ -5,6 +5,11 @@ import { SUITS } from './engine.mjs';
 
 const pick = (arr, rng) => arr[Math.floor((rng ? rng() : Math.random()) * arr.length)];
 
+// The per-suit count the active complicity rule ticks: leans under
+// tickOn='declare', wins under tickOn='win'. runGame passes it as
+// ctx.complicity; outside the engine it falls back to wins.
+const ticks = (self, ctx) => ctx.complicity ?? self.wins;
+
 // mono(suit): always lean one suit. The "legible" player the Complicity Track
 // is supposed to punish. Declares its suit if drawn, else its most-drawn suit.
 export const mono = (suit) => (self, ctx) => {
@@ -12,12 +17,13 @@ export const mono = (suit) => (self, ctx) => {
   return ctx.handSuits[0];
 };
 
-// maskSwitcher: never take a 3rd win on a suit if it can help it. Prefers the
-// available suit it has won the FEWEST times. If every available suit is already
-// maxed (won >= 2), it's forced. This is the bot whose forced-exposure rate
-// tells us if the deck is too thin.
+// maskSwitcher: never take a 3rd complicity tick on a suit if it can help it.
+// Prefers the available suit with the FEWEST ticks (leans or wins, per the
+// active rule). If every available suit is already maxed (>= 2), it's forced.
+// This is the bot whose forced-exposure rate tells us if the deck is too thin.
 export const maskSwitcher = () => (self, ctx) => {
-  const ranked = ctx.handSuits.slice().sort((a, b) => (self.wins[a] || 0) - (self.wins[b] || 0));
+  const c = ticks(self, ctx);
+  const ranked = ctx.handSuits.slice().sort((a, b) => (c[a] || 0) - (c[b] || 0));
   return ranked[0];
 };
 
@@ -29,13 +35,14 @@ export const greedy = () => (self, ctx) => {
   return ctx.handSuits[0];
 };
 
-// adaptive: like maskSwitcher but will take a 2nd win freely (the +1 is worth
+// adaptive: like maskSwitcher but will take a 2nd tick freely (the +1 is worth
 // it) and only avoids the 3rd. Closest to how a smart human plays the dilemma.
 export const adaptive = () => (self, ctx) => {
-  const safe = ctx.handSuits.filter((s) => (self.wins[s] || 0) < 2);
+  const c = ticks(self, ctx);
+  const safe = ctx.handSuits.filter((s) => (c[s] || 0) < 2);
   if (safe.length) {
-    // among safe suits, prefer the one with a win already (build the +1) then fresh
-    safe.sort((a, b) => (self.wins[b] || 0) - (self.wins[a] || 0));
+    // among safe suits, prefer the one with a tick already (build the +1) then fresh
+    safe.sort((a, b) => (c[b] || 0) - (c[a] || 0));
     return safe[0];
   }
   return ctx.handSuits[0]; // forced into a maxed suit
