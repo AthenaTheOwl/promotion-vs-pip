@@ -51,3 +51,26 @@ tool; this is a one-number change.
 
 `engine/engine.mjs`, `engine/bots.mjs`, `sim/balance.mjs`. Reproduce with
 `node sim/balance.mjs`.
+
+## Correction (2026-10-19)
+
+The ticks-on-LEAN row above was measured with a bug: the mask-switcher and
+adaptive bots avoided a third same-suit *win*, not a third *lean*, so under this
+rule they were not trying to stay clean, and the forced-by-luck figure described
+a bot that ignored its leans. The bots now steer on the count the active rule
+ticks. Re-run of `node sim/balance.mjs`, 3-of-each, ticks on LEAN:
+
+| rule | mono win% | mono exposes/game | switcher win% | switcher exposes/game | forced-by-luck (switcher / adaptive) |
+|---|---|---|---|---|---|
+| ticks on LEAN (corrected bots) | 1.3% | 1.00 | 24.2% | 0.00 | 0.000 / ~0.014 per game |
+
+The decision stands: the over-leaner still collapses, and a bot that spreads its
+leans can avoid exposure entirely, so the track still punishes intent, not luck.
+Greedy, which ignores the track, falls from 25.1% to 18.6%.
+
+PIP note: the engine had no PIP. It now applies the `rules/v0.md` PIP (4 red
+flags; HR play; a second PIP is a hiring freeze). Under this rule a 6-quarter
+game tops out at 3 red flags (3 leans to expose, then 1 per lean), so PIP
+cannot fire in a 6-quarter game. The sim exercises it with a labelled
+8-quarter probe, where mono-vision is on a PIP in 62% of games. Whether PIP
+should be reachable in 6 quarters belongs with the penalty sweep above.
