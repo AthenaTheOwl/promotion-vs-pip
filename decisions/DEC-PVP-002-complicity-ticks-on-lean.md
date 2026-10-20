@@ -69,7 +69,9 @@ leans can avoid exposure entirely, so the track still punishes intent, not luck.
 Greedy, which ignores the track, falls from 25.1% to 18.6%.
 
 PIP note: the engine had no PIP. It now applies the `rules/v0.md` PIP (4 red
-flags; HR play; a second PIP is a hiring freeze). Under this rule a 6-quarter
+flags; a PIP player keeps declaring with the same bot and cannot win the
+promotion, though HR's free Exposures are not modelled; a second PIP is a
+hiring freeze). Under this rule a 6-quarter
 game tops out at 3 red flags (3 leans to expose, then 1 per lean), so PIP
 cannot fire in a 6-quarter game. The sim exercises it with a labelled
 8-quarter probe, where mono-vision is on a PIP in 62% of games. Whether PIP

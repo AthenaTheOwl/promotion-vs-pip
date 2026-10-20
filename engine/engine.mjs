@@ -1,7 +1,7 @@
 // promotion-vs-pip — pure rules engine (no UI, no I/O, seeded RNG passed in).
 // The deckbuilder reframe: every quarter you declare a suit, dominance is
 // resolved non-transitively, and winning the SAME suit too many times exposes
-// it (the Complicity Track). The UI and the balance sim both import this.
+// it (the Complicity Track). The balance sim and tests import this.
 
 export const SUITS = ['vision', 'process', 'receipts', 'coalition'];
 
@@ -88,7 +88,8 @@ function applyLean(player, suit) {
 // tickOn: 'win' (complicity ticks only on quarter dominance) or 'declare'
 // (complicity ticks every time you lean on a suit).
 // PIP (rules/v0.md): a player who reaches `pipAt` red flags is on a PIP. They
-// keep declaring as HR but cannot win the promotion. A second PIP ends the game
+// keep declaring with the same bot but cannot win the promotion (HR's free
+// Exposures are not modelled). A second PIP ends the game
 // at once with no winner (hiring freeze). Returns a result record.
 export function runGame({ strategies, perSuit = 3, quarters = 6, handSize = 5, tickOn = 'win', pipAt = 4 }, rng) {
   const players = strategies.map((strategy, id) => ({

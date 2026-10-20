@@ -106,7 +106,7 @@ test("6 quarters cannot reach the 4 red flags a PIP needs; the sim table reaches
   assert.ok(pips > 0, "a simulated game should reach a PIP");
 });
 
-test("a PIP player keeps playing as HR but cannot win the promotion", () => {
+test("a PIP player keeps playing but cannot win the promotion", () => {
   // vision beats process every quarter: player 0 wins 7 times, exposes vision
   // on the 3rd win and takes a red flag on each of wins 4-7.
   const result = runGame(

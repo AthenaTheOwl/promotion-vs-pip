@@ -1,6 +1,7 @@
 // Balance simulator. The one question the design hinges on: does the Complicity
 // Track punish STRATEGY (you leaned on one suit on purpose) or DRAW LUCK (you got
-// forced into a third same-suit win)? Run a fleet of games and measure.
+// forced into a third same-suit tick: a lean under RULE B, a win under RULE A)?
+// Run a fleet of games and measure.
 //
 //   node sim/balance.mjs
 
