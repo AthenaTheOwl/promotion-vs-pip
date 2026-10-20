@@ -156,3 +156,25 @@ test("a second PIP is a hiring freeze: the game ends with no winner", () => {
     assert.equal(player.redFlags, 4);
   }
 });
+
+test("a hiring freeze leaves no winner even when a clean player leads", () => {
+  const rotate = (suits) => (self, ctx) => suits[ctx.quarter % suits.length];
+  const result = runGame(
+    {
+      strategies: [() => "vision", () => "vision", rotate(["process", "receipts", "coalition", "vision"])],
+      perSuit: 1,
+      quarters: 8,
+      handSize: 1,
+      tickOn: "declare",
+    },
+    makeRng(7),
+  );
+
+  const clean = result.players[2];
+  assert.equal(result.hiringFreeze, true);
+  assert.equal(result.quartersPlayed, 7);
+  assert.equal(clean.pip, false);
+  assert.equal(clean.redFlags, 0);
+  for (const other of result.players.slice(0, 2)) assert.ok(clean.applause > other.applause);
+  assert.equal(result.winner, -1);
+});
