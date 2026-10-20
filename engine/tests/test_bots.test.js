@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { SUITS, adaptive, greedy, maskSwitcher, mono, random } from "../bots.mjs";
+import { makeRng, runGame } from "../engine.mjs";
 
 test("mono declares its suit when available and otherwise takes the first suit in hand", () => {
   const strategy = mono("vision");
@@ -40,6 +41,26 @@ test("adaptive avoids a third win and prefers a useful second win", () => {
     ),
     "vision",
   );
+});
+
+test("maskSwitcher and adaptive steer on ctx.complicity (leans under tickOn declare), not wins", () => {
+  // No wins anywhere, but vision has already been leaned on twice: a third lean exposes it.
+  const self = { wins: {}, leans: { vision: 2, process: 1 } };
+  const ctx = { handSuits: ["vision", "process"], complicity: self.leans };
+
+  assert.equal(maskSwitcher()(self, ctx), "process");
+  assert.equal(adaptive()(self, ctx), "process");
+});
+
+test("in a declare-rule game, maskSwitcher only exposes a suit when its hand forces it", () => {
+  for (let seed = 0; seed < 200; seed++) {
+    const result = runGame(
+      { strategies: [maskSwitcher(), mono("vision"), adaptive(), greedy()], perSuit: 3, quarters: 6, handSize: 5, tickOn: "declare" },
+      makeRng(seed),
+    );
+    const switcher = result.players[0];
+    assert.equal(switcher.exposedSuits, switcher.forcedExposures, `seed ${seed}`);
+  }
 });
 
 test("random uses the supplied rng to pick from hand suits", () => {

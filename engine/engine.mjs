@@ -1,7 +1,7 @@
 // promotion-vs-pip — pure rules engine (no UI, no I/O, seeded RNG passed in).
 // The deckbuilder reframe: every quarter you declare a suit, dominance is
 // resolved non-transitively, and winning the SAME suit too many times exposes
-// it (the Complicity Track). The UI and the balance sim both import this.
+// it (the Complicity Track). The balance sim and tests import this.
 
 export const SUITS = ['vision', 'process', 'receipts', 'coalition'];
 
@@ -82,28 +82,37 @@ function applyLean(player, suit) {
 }
 
 // Run a full game. `strategies` is an array of bot fns:
-//   (self, ctx) => declaredSuit, where ctx = { handSuits, quarter, players }.
+//   (self, ctx) => declaredSuit, where ctx = { handSuits, quarter, players, complicity }.
+// ctx.complicity is the per-suit count the active rule ticks (self.leans under
+// 'declare', self.wins under 'win'), so a bot avoiding exposure steers on it.
 // tickOn: 'win' (complicity ticks only on quarter dominance) or 'declare'
-// (complicity ticks every time you lean on a suit). Returns a result record.
-export function runGame({ strategies, perSuit = 3, quarters = 6, handSize = 5, tickOn = 'win' }, rng) {
+// (complicity ticks every time you lean on a suit).
+// PIP (rules/v0.md): a player who reaches `pipAt` red flags is on a PIP. They
+// keep declaring with the same bot but cannot win the promotion (HR's free
+// Exposures are not modelled). A second PIP ends the game
+// at once with no winner (hiring freeze). Returns a result record.
+export function runGame({ strategies, perSuit = 3, quarters = 6, handSize = 5, tickOn = 'win', pipAt = 4 }, rng) {
   const players = strategies.map((strategy, id) => ({
     id, strategy,
     deck: shuffle(makeDeck(perSuit), rng),
     applause: 0, redFlags: 0,
     wins: {}, leans: {}, exposed: {},
     forcedExposures: 0, // times the bot was forced to declare a maxed suit (no alternative)
+    pip: false, pipQuarter: -1,
   }));
 
   const counter = (p) => (tickOn === 'declare' ? p.leans : p.wins);
+  let hiringFreeze = false;
+  let quartersPlayed = 0;
 
-  for (let q = 0; q < quarters; q++) {
+  for (let q = 0; q < quarters && !hiringFreeze; q++) {
     // draw a hand: the suits available to declare this quarter
     const declared = players.map((p) => {
       if (p.deck.length < handSize) p.deck = shuffle(makeDeck(perSuit), rng); // reshuffle a fresh cycle
       const hand = p.deck.slice(0, handSize);
       p.deck = p.deck.slice(handSize);
       const handSuits = [...new Set(hand.map((c) => c.suit))];
-      const choice = p.strategy(p, { handSuits, quarter: q, players });
+      const choice = p.strategy(p, { handSuits, quarter: q, players, complicity: counter(p) });
       // forced = wanted to avoid a maxed suit, but the hand only offered maxed suits
       const c = counter(p);
       const fresh = handSuits.filter((s) => (c[s] || 0) < 2);
@@ -127,13 +136,21 @@ export function runGame({ strategies, perSuit = 3, quarters = 6, handSize = 5, t
         players[res.winner].forcedExposures += 1;
       }
     }
+
+    for (const p of players) {
+      if (!p.pip && p.redFlags >= pipAt) { p.pip = true; p.pipQuarter = q; }
+    }
+    if (players.filter((p) => p.pip).length >= 2) hiringFreeze = true;
+    quartersPlayed = q + 1;
   }
 
   const ranked = players.map((p) => ({
     id: p.id, applause: p.applause, redFlags: p.redFlags,
     wins: p.wins, exposedSuits: Object.keys(p.exposed).length, forcedExposures: p.forcedExposures,
+    pip: p.pip, pipQuarter: p.pipQuarter,
   }));
-  const top = Math.max(...ranked.map((r) => r.applause));
-  const winners = ranked.filter((r) => r.applause === top).map((r) => r.id);
-  return { winner: winners.length === 1 ? winners[0] : -1, players: ranked };
+  const eligible = hiringFreeze ? [] : ranked.filter((r) => !r.pip);
+  const top = Math.max(...eligible.map((r) => r.applause));
+  const winners = eligible.filter((r) => r.applause === top).map((r) => r.id);
+  return { winner: winners.length === 1 ? winners[0] : -1, hiringFreeze, quartersPlayed, players: ranked };
 }

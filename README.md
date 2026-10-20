@@ -8,7 +8,7 @@ A 36-card print-and-play deck of corporate satire with mechanical teeth. Six Mee
 
 It's Brechtian on purpose. Cards carry an alienation instruction — say "synergies" exactly once and apologize for it, mime cradling a fragile object whenever you say "customer" — so the table is always half-performing the meeting it's mocking. And the audience votes can flip incentives mid-round, so the strategy you committed to on turn one can be the thing that sinks you by turn four.
 
-No app, no engine, no companion software. The whole game fits in a paper sleeve and runs in about 30 minutes.
+The printed game needs no app, no engine, no companion software (`engine/` and `sim/` are a design-time balance sim, not part of play). The whole game fits in a paper sleeve and runs in about 30 minutes.
 
 ## Try it
 
@@ -81,7 +81,13 @@ Part of the narrative cluster — small print-and-play experiments that turn a s
 ├── styles/cards.css             2.5x3.5in print CSS
 ├── rules/v0.md                  60-minute session rules
 ├── decisions/
-│   └── DEC-PVP-001-card-counts.md
+│   ├── DEC-PVP-001-card-counts.md
+│   └── DEC-PVP-002-complicity-ticks-on-lean.md
+├── docs/
+│   ├── first-pr.md              first PR plan after the scaffold
+│   └── spectator-playtest.md    audience-vote playtest method
+├── engine/                      rules engine + bots (deckbuilder reframe) + tests
+├── sim/balance.mjs              Complicity Track / PIP balance sim
 ├── playtest-log/
 │   └── 2026-06-21-template.md
 ├── print.example.html           committed sample render
@@ -90,10 +96,10 @@ Part of the narrative cluster — small print-and-play experiments that turn a s
     └── 0002-design/             v0.1 narrowed scope (this is what shipped)
 ```
 
-## License
-
-MIT. See `LICENSE`. Game design is licensed under the same terms.
-
 ## Method update
 
 [Playtest the audience intervention as a separate mechanism](docs/spectator-playtest.md).
+
+## License
+
+MIT. See `LICENSE`. Game design is licensed under the same terms.

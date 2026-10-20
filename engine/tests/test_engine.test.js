@@ -89,3 +89,92 @@ test("tickOn declare exposes a third lean and penalizes exposed leans", () => {
     assert.equal(player.exposedSuits, 1);
   }
 });
+
+test("6 quarters cannot reach the 4 red flags a PIP needs; the sim table reaches PIP in a longer game", async () => {
+  const { mono, maskSwitcher, adaptive, greedy } = await import("../bots.mjs");
+  const table = () => [mono("vision"), maskSwitcher(), adaptive(), greedy()];
+  let pips = 0;
+  for (let seed = 0; seed < 200; seed++) {
+    const six = runGame({ strategies: table(), perSuit: 3, quarters: 6, handSize: 5, tickOn: "declare" }, makeRng(seed));
+    for (const player of six.players) {
+      assert.ok(player.redFlags <= 3, `seed ${seed}`);
+      assert.equal(player.pip, false);
+    }
+    const eight = runGame({ strategies: table(), perSuit: 3, quarters: 8, handSize: 5, tickOn: "declare" }, makeRng(seed));
+    pips += eight.players.filter((player) => player.pip).length;
+  }
+  assert.ok(pips > 0, "a simulated game should reach a PIP");
+});
+
+test("a PIP player keeps playing but cannot win the promotion", () => {
+  // vision beats process every quarter: player 0 wins 7 times, exposes vision
+  // on the 3rd win and takes a red flag on each of wins 4-7.
+  const result = runGame(
+    { strategies: [() => "vision", () => "process"], perSuit: 1, quarters: 7, handSize: 1, tickOn: "win" },
+    makeRng(7),
+  );
+
+  const [onPip, other] = result.players;
+  assert.equal(onPip.pip, true);
+  assert.equal(onPip.pipQuarter, 6);
+  assert.ok(onPip.applause > other.applause);
+  assert.equal(result.hiringFreeze, false);
+  assert.equal(result.winner, 1);
+});
+
+test("PIP play continues after the 4th red flag", () => {
+  const rotate = (suits) => (self, ctx) => suits[ctx.quarter % suits.length];
+  const result = runGame(
+    {
+      strategies: [() => "vision", rotate(["process", "receipts", "coalition", "vision"])],
+      perSuit: 1,
+      quarters: 8,
+      handSize: 1,
+      tickOn: "declare",
+    },
+    makeRng(7),
+  );
+
+  assert.equal(result.quartersPlayed, 8);
+  assert.equal(result.players[0].pipQuarter, 6);
+  assert.equal(result.players[0].redFlags, 5);
+  assert.equal(result.winner, 1);
+});
+
+test("a second PIP is a hiring freeze: the game ends with no winner", () => {
+  const alwaysVision = () => "vision";
+  const result = runGame(
+    { strategies: [alwaysVision, alwaysVision], perSuit: 1, quarters: 8, handSize: 1, tickOn: "declare" },
+    makeRng(7),
+  );
+
+  assert.equal(result.hiringFreeze, true);
+  assert.equal(result.quartersPlayed, 7);
+  assert.equal(result.winner, -1);
+  for (const player of result.players) {
+    assert.equal(player.pip, true);
+    assert.equal(player.redFlags, 4);
+  }
+});
+
+test("a hiring freeze leaves no winner even when a clean player leads", () => {
+  const rotate = (suits) => (self, ctx) => suits[ctx.quarter % suits.length];
+  const result = runGame(
+    {
+      strategies: [() => "vision", () => "vision", rotate(["process", "receipts", "coalition", "vision"])],
+      perSuit: 1,
+      quarters: 8,
+      handSize: 1,
+      tickOn: "declare",
+    },
+    makeRng(7),
+  );
+
+  const clean = result.players[2];
+  assert.equal(result.hiringFreeze, true);
+  assert.equal(result.quartersPlayed, 7);
+  assert.equal(clean.pip, false);
+  assert.equal(clean.redFlags, 0);
+  for (const other of result.players.slice(0, 2)) assert.ok(clean.applause > other.applause);
+  assert.equal(result.winner, -1);
+});
